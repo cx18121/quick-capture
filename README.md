@@ -1,6 +1,6 @@
 # Quick Capture
 
-Press **⌘⇧Space** anywhere → type → **⌘↵** → file lands in `~/Documents/cxkb/raw/inbox/`. Native macOS, designed for sub-50ms hotkey-to-typing.
+Built for personal use. Press **⌘⇧Space** anywhere → type → **⌘↵** → file lands in knowledge base inbox. 
 
 ## Build & install
 
@@ -9,10 +9,6 @@ Press **⌘⇧Space** anywhere → type → **⌘↵** → file lands in `~/Docu
 ./build-app.sh install
 open /Applications/QuickCapture.app
 ```
-
-First run asks for **Accessibility** permission (needed for the global hotkey and the focused-window-title read). Grant it in System Settings, then quit and relaunch.
-
-The first time you capture from each supported browser (Safari, Chrome, Arc, Brave, Edge), macOS prompts for AppleEvents permission so the tab URL can be pulled.
 
 ## What lands in the inbox
 
