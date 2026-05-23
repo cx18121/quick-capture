@@ -13,6 +13,22 @@ final class HotkeyManager {
         self.onTrigger = onTrigger
     }
 
+    deinit {
+        // The C tap callback holds an unretained pointer to `self`. If the tap
+        // outlives us — i.e. the run loop source isn't removed before the last
+        // strong reference is released — the next event fires through a
+        // dangling pointer. Today nothing replaces the manager, but install
+        // failures or a future "re-grant permissions" reinstall would hit this.
+        // Use CFRunLoopGetMain() because install() ran on the main thread but
+        // deinit may not.
+        if let tap = eventTap {
+            CGEvent.tapEnable(tap: tap, enable: false)
+        }
+        if let source = runLoopSource {
+            CFRunLoopRemoveSource(CFRunLoopGetMain(), source, .commonModes)
+        }
+    }
+
     func install() {
         let mask = CGEventMask(1 << CGEventType.keyDown.rawValue)
 

@@ -45,6 +45,7 @@ final class CaptureController {
 
         let panel = CapturePanel(contentRect: rect)
         let view = CaptureView(
+            context: context,
             onSubmit: { [weak self] text in
                 guard let self = self else { return }
                 self.close()
